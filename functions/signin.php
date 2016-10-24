@@ -11,9 +11,7 @@ if (!isset($_SESSION['u_id'])) {
 		 // Grab the user-entered log-in data
 		 $username = mysqli_real_escape_string($dbc, trim($_POST['username']));
 		 $password = mysqli_real_escape_string($dbc, trim($_POST['password']));
-
-		 
-		 if (!empty($username) && !empty($password)) {
+	 if (!empty($username) && !empty($password)) {
 		// Look up the username and password in the database
 		$query = "SELECT u_id  FROM user WHERE u_name = '$username' AND p_word = SHA('$password')";
 		$data = mysqli_query($dbc, $query);
@@ -22,33 +20,19 @@ if (!isset($_SESSION['u_id'])) {
 		 $row = mysqli_fetch_array($data);
 		 $_SESSION['u_id'] = $row['u_id'];
 		 $_SESSION['username'] = $row['u_name'];
-   
 		 setcookie('u_id', $row['u_id'], time() + (60 * 60 * 24 * 30));    // expires in 30 days
 		 setcookie('username', $row['username'], time() + (60 * 60 * 24 * 30));  // expires in 30 days
-		
 		echo $_SESSION['u_id'];
-		
-		 //header('Location: http://livefitteam.com/index.php?page=main&layout=4');
-		 
-		/* echo'<div class="row"><div class="col-lg-4"></div>
-		 			<div class="col-lg-4 alert alert-success" align="center">
-		 	<a href="http://livefitteam.com/index.php?page=main&layout=4" align="center" class="">Go to the Back Office</a>
-					</div>
-		 	</div>';*/
-		 
-		}
-		else {
+	}else {
 		 // The username/password are incorrect so set an error message
 		 $error_msg = 'Sorry, you must enter a valid username and password to log in';
 		}
 		 }
 		 else {
 		// The username/password weren't entered so set an error message
-		$error_msg = 'Sorry, you must enter your username and password to log in.';
-		
+		$error_msg = 'Sorry, you must enter your username and password to log in.';	
 		 }
 		}
-		 
 		 // Insert the page header
 		 $page_title = 'Log In';
 		 // If the session var is empty, show any error message and the log-in form; otherwise confirm the log-in
