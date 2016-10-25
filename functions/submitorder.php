@@ -26,9 +26,7 @@ if (isset($_POST['submit'])) {
     mysqli_query($dbc, $query) or die('Error querying database.');
     $query2 = "INSERT INTO user_orders (u_id, product_key) VALUES ('$u_id', '$product')";
      mysqli_query($dbc, $query2) or die('Error querying database 2 .'); 
-
 }
-
 if (isset ($_POST['submit2'])){
 header('Location: http://localhost:8888/musicApp/index.php?layout=1&page=thankyou&product='.$product.'&add=');
 
