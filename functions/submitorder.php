@@ -38,5 +38,6 @@ mysqli_close($dbc);
 echo $upsell_purchased;
 
 }
+
 ?>
 
