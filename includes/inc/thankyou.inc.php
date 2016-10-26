@@ -1,7 +1,16 @@
 <?php 
-$add = $_GET['add'];
 session_start();
-show_user_product();
+$add = $_GET['add'];
+$product = $_GET['product'];
+$upsell = $_GET['upsell'];
+
+ if ($add == !NULL){
+  show_user_product();
+}
+ if ($upsell == !NULL){
+  final_purchase();
+}
+
 ?>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -9,8 +18,11 @@ show_user_product();
 <div class="container">
   <!-- Trigger the modal with a button -->
   <!-- Modal -->
- <div class="col-md-9"><p align="center">Thank you for your order </p></div>
-<? if ($add == !null){ ?>
+   <?
+  
+   if ($add == !NULL){
+    
+    ?>
   <div class="modal fade" id="upsellModal" role="dialog">
     <div class="modal-dialog">
       <!-- Modal content-->
@@ -20,6 +32,8 @@ show_user_product();
             <? upsell(); ?>  
         <div class="modal-footer">
             <form method="post" action="functions/submitorder.php">
+            <input type="hidden" name="product" value="<? echo $product; ?>">
+            <input type="hidden" name="upsell" value="<? echo $add; ?>">
             <input type="hidden" name="yes" value="yes">
             <button type="submit" class="btn btn-primary" name="submit2" >YES PLEASE ADD!</button>
             </form>
@@ -29,7 +43,18 @@ show_user_product();
     </div>
   </div>
 </div>
-<? } ?>
+<? } 
+?>
+
+<div class="col-md-3">
+<? if ($upsell == !NULL){
+add_amounts();
+ }
+?>
+</div>
+
+
+
 <script type="text/javascript">
 $(window).load(function()
 {

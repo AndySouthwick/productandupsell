@@ -28,7 +28,7 @@ if (isset($_POST['submit'])) {
      mysqli_query($dbc, $query2) or die('Error querying database 2 .'); 
 }
 if (isset ($_POST['submit2'])){
-header('Location: http://localhost:8888/musicApp/index.php?layout=1&page=thankyou&product='.$product.'&add=');
+header('Location: http://localhost:8888/musicApp/index.php?layout=1&page=thankyou&product='.$product.'&upsell='.$upsell.'');
 
 $query = "UPDATE user_orders SET  upsell_purchased = '$upsell_purchased' WHERE u_id = '$u_id'";
 mysqli_query($dbc, $query) or die('Error querying database.');
