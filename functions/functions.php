@@ -112,6 +112,8 @@ while($row = $data->fetch_array()) {
        echo'</div></div></div>';
 }
  $upsold = 3;
+ $shipping = 2;
+ 
 $query = "SELECT unique_id, product_name, product_price, product_desc, upsell_data, product_img, product_category FROM my_products WHERE unique_id = '$upsell'";
 $data = mysqli_query($dbc, $query);
 while($row = $data->fetch_array()) {
@@ -132,12 +134,19 @@ while($row = $data->fetch_array()) {
 
    
 }
+
+
   echo '<div class="col-md-3"><div class="panel panel-default"><div class="panel-body" align="center">';
   $final_price = $upsold + $product_price;
-  
+  $tax = $final_price * .06;
+$final_price_with_tax = $tax + $final_price;
+$finalpircetaxandship = $final_price_with_tax + $shipping;
   echo $product_name. ' $' .$product_price.'<br/>';
   echo $product2_name. ' $' .$upsold. '<br/>';
-  echo 'Total Price: $'.$final_price. '<br/>';
+  echo 'Price: $'.$final_price. '<br/>';
+   echo 'Price With Tax: $'.$final_price_with_tax. '<br/>';
+    echo 'Price With Tax and Shipping: $' .$finalpircetaxandship. '<br/>';
+  
   echo'Thank you for your order';
  echo'</div></div></div>';
 };
