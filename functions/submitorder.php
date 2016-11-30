@@ -23,7 +23,7 @@ $dbc = mysqli_connect('localhost', 'root', 'root', 'music_app') or die('Error co
 if (isset($_POST['submit'])) {
 
     if ($cc == 4111111111111111){
-    
+        $day = jddayofweek ( cal_to_jd(CAL_GREGORIAN, date("m"),date("d"), date("Y")) , 1 ); 
         $query = "UPDATE user SET first_name = '$f_name', last_name = '$l_name',  
         phone = '$phone', address_1 = '$address', address_2 = 'NULL', city = '$city',
         state = '$state', zip ='$zip', cc = '$cc', expires = '$expires', cvc = '$cvc' 
@@ -32,7 +32,7 @@ if (isset($_POST['submit'])) {
         mysqli_query($dbc, $query) or die('Error querying database.');
 
 
-        $query2 = "INSERT INTO user_orders (u_id, product_key) VALUES ('$u_id', '$product')";
+        $query2 = "INSERT INTO user_orders (u_id, product_key, day) VALUES ('$u_id', '$product', '$day')";
         mysqli_query($dbc, $query2) or die('Error querying database 2 .'); 
 
 

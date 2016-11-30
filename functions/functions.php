@@ -28,7 +28,7 @@ if ($page == main){
     echo '<button class="btn btn-primary btn-lg dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false"data-toggle="modal" data-target="#signInModal">
     Add To Cart <span class="glyphicon glyphicon-music"></span>
   </button>'; }else{
-      echo '<a href="/index.php?layout=1&page=cart&product=' .$product_id. '&add='.$upsell.' "  class="btn btn-primary btn-lg dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false">
+      echo '<a href="' .dirname($_SERVER['PHP_SELF']). '/index.php?layout=1&page=cart&product=' .$product_id. '&add='.$upsell.' "  class="btn btn-primary btn-lg dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false">
     Add To Cart <span class="glyphicon glyphicon-music"></span> </a>';
     }
     echo'</div></div></div>';
@@ -49,7 +49,7 @@ while($row = $data->fetch_array()) {
     $upsell = $row['upsell_data'];  
    $product_price =  $row['product_price'];  
         if ($page == cart){
-        echo '<a href="/index.php?layout=1&page=cart" align="right">Remove</a>'; 
+        echo '<a href="../index.php?layout=1&page=main" align="right">Remove</a>'; 
         }
     echo'</div></div></div>';
  };
