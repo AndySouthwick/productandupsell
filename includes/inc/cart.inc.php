@@ -21,4 +21,5 @@ $upsell =$_GET['add'];
                 CVC<input type="text" id="CVC" name="cvc" class="form-control" placeholder="CVC" required/>
                 <input type="submit" value="Buy Now" name="submit" class="btn btn-lg btn-primary btn-block" />
             </form>
+           <div class="alert alert-danger" role="alert"><?php ccAuth(); ?></div> 
 </div></div></div>

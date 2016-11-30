@@ -1,5 +1,6 @@
 <?php 
 session_start();
+$order_id =$_GET['order_id'];
 $add = $_GET['add'];
 $product = $_GET['product'];
 $upsell = $_GET['upsell'];
@@ -8,6 +9,10 @@ $upsell = $_GET['upsell'];
   show_user_product();
 }
  if ($upsell == !NULL){
+  final_purchase_upsell();
+}
+
+if ($upsell == NULL){
   final_purchase();
 }
 
@@ -29,11 +34,12 @@ $upsell = $_GET['upsell'];
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <? upsell(); ?>  
+            <? upsell(); ?>     
         <div class="modal-footer">
             <form method="post" action="functions/submitorder.php">
             <input type="hidden" name="product" value="<? echo $product; ?>">
             <input type="hidden" name="upsell" value="<? echo $add; ?>">
+            <input type="hidden" name="order_id" value="<? echo $order_id; ?>">
             <input type="hidden" name="yes" value="yes">
             <button type="submit" class="btn btn-primary" name="submit2" >YES PLEASE ADD!</button>
             </form>

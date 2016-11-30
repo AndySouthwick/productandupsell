@@ -24,9 +24,9 @@ include'var/connectvar.php';
         echo '
 		<div class="wrap">
     		<div class="container">
-		<p align="center">Your new account has been successfully created. You\'re now ready to <a href="http://localhost:8888/musicApp/index.php?layout=1&page=main/">Add stuff to your cart</a>.</p>
+		<p align="center">Your new account has been successfully created. You\'re now ready to <a href="/index.php?layout=1&page=main/">Add stuff to your cart</a>.</p>
 		</div></div>';
-        header('Location: localhost:8888/musicApp/index.php?layout=1&page=cart');
+        header('Location: ../index.php?layout=1&page=cart');
         mysqli_close($dbc);
         exit();    
       }
