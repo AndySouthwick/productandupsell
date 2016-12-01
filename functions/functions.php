@@ -28,7 +28,7 @@ if ($page == main){
     echo '<button class="btn btn-primary btn-lg dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false"data-toggle="modal" data-target="#signInModal">
     Add To Cart <span class="glyphicon glyphicon-music"></span>
   </button>'; }else{
-      echo '<a href="' .dirname($_SERVER['PHP_SELF']). '/index.php?layout=1&page=cart&product=' .$product_id. '&add='.$upsell.' "  class="btn btn-primary btn-lg dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false">
+      echo '<a href="' .dirname($_SERVER['PHP_SELF']). '/musicApp/index.php?layout=1&page=cart&product=' .$product_id. '&add='.$upsell.' "  class="btn btn-primary btn-lg dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false">
     Add To Cart <span class="glyphicon glyphicon-music"></span> </a>';
     }
     echo'</div></div></div>';
