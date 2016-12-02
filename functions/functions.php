@@ -28,7 +28,7 @@ if ($page == main){
     echo '<button class="btn btn-primary btn-lg dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false"data-toggle="modal" data-target="#signInModal">
     Add To Cart <span class="glyphicon glyphicon-music"></span>
   </button>'; }else{
-      echo '<a href="' .dirname($_SERVER['PHP_SELF']). '/musicApp/index.php?layout=1&page=cart&product=' .$product_id. '&add='.$upsell.' "  class="btn btn-primary btn-lg dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false">
+      echo '<a href="' .dirname($_SERVER['PHP_SELF']). '/index.php?layout=1&page=cart&product=' .$product_id. '&add='.$upsell.' "  class="btn btn-primary btn-lg dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false">
     Add To Cart <span class="glyphicon glyphicon-music"></span> </a>';
     }
     echo'</div></div></div>';
@@ -201,36 +201,7 @@ $finalpircetaxandship = $final_price_with_tax + $shipping;
 
 
 
-// $query1 = "SELECT product_name, product_price, product_desc, upsell_data, product_img, product_category FROM my_products WHERE unique_id = '$upsell'";
-// $query2 = "SELECT product_name, product_price, product_desc, upsell_data, product_img, product_category FROM my_products WHERE unique_id = '$product'";
-// $data = mysqli_query($dbc, $query);
-// $data2 = mysqli_query($dbc, $query2);
 
-// while($row = $data->fetch_array()) {
-//   // The  row was found so display the  data
-//     echo'<div class="col-md-9"><div class="panel panel-default"><div class="panel-body" align="center">';
-//     echo $_SESSION['u_id'];
-//     echo '<img src=' . $row['product_img'] . ' width="100%">'; 
-//     echo '' . $row['product_name'] . ' ';
-//     echo ' $' . $row['product_price'] . ' ';
-//     echo '' . $row['product_desc'] . ' ';
-//     echo '' . $row['product_category'] . ' ';
-//     $product_id =  $row['unique_id'];  
-//     $upsell = $row['upsell_data'];  
-// }
-// while($row = $data2->fetch_array()) {
-//   // The  row was found so display the  data
-//     echo'<div class="col-md-9"><div class="panel panel-default"><div class="panel-body" align="center">';
-//     echo $_SESSION['u_id'];
-//     echo '<img src=' . $row['product_img'] . ' width="100%">'; 
-//     echo '' . $row['product_name'] . ' ';
-//     echo ' $' . $row['product_price'] . ' ';
-//     echo '' . $row['product_desc'] . ' ';
-//     echo '' . $row['product_category'] . ' ';
-//     $product_id =  $row['unique_id'];  
-//     $upsell = $row['upsell_data'];  
-// }
-  
 
 
 ?>
