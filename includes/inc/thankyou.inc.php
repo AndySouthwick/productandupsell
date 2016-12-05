@@ -52,12 +52,12 @@ if ($upsell == NULL){
 <? } 
 ?>
 
-<div class="col-md-3">
+
 <? if ($upsell == !NULL){
 add_amounts();
  }
 ?>
-</div>
+
 
 
 

@@ -64,10 +64,10 @@ mysqli_close($dbc);
 function ccAuth(){
 $error = $_GET['error'];
 if ($error == 1){
-  echo 'Insuficient Funds';
+  echo '<div class="alert alert-danger" role="alert">Insuficient Funds</div>';
 };
 if ($error == 2){
-  echo 'payement not accepted';
+  echo '<div class="alert alert-danger" role="alert">payement not accepted</div>';
 };
 }
 //function for upsell
@@ -112,7 +112,10 @@ while($row = $data->fetch_array()) {
 
 
  $shipping = 2;
+ $threedays = date('Y-m-d', strtotime("+3 days"));
+$fivedays = date('Y-m-d', strtotime("+5 days"));
          echo '<div class="col-md-3"><div class="panel panel-default"><div class="panel-body" align="center">';
+         echo 'you should expect your product to arrive between ' .$threedays. ' and ' .$fivedays. '<br/>';
   $final_price =  $product_price;
   $tax = $final_price * .0687;
 $final_price_with_tax = $tax + $final_price;
@@ -132,6 +135,7 @@ $finalpircetaxandship = $final_price_with_tax + $shipping;
 
 //function for thank you page showing final purchase
 function final_purchase_upsell(){
+  echo '<div class="col-md-9">';
   $upsell =$_GET['upsell'];
   $product = $_GET['product'];
 $dbc = mysqli_connect('localhost', 'root', 'root', 'music_app')
@@ -140,7 +144,7 @@ $query = "SELECT unique_id, product_name, product_price, product_desc, upsell_da
 $data = mysqli_query($dbc, $query);
 while($row = $data->fetch_array()) {
     // The  row was found so display the  data
-    echo'<div class="col-md-9"><div class="panel panel-default"><div class="panel-body" align="center">';
+    echo'<div class="col-md-12"><div class="panel panel-default"><div class="panel-body" align="center">';
     echo $_SESSION['u_id'];
     echo '<img src=' . $row['product_img'] . ' width="100%">'; 
     echo '' . $row['product_name'] . ' ';
@@ -162,7 +166,7 @@ $query = "SELECT unique_id, product_name, product_price, product_desc, upsell_da
 $data = mysqli_query($dbc, $query);
 while($row = $data->fetch_array()) {
     // The  row was found so display the  data
-    echo'<div class="col-md-9"><div class="panel panel-default"><div class="panel-body" align="center">';
+    echo'<div class="col-md-12"><div class="panel panel-default"><div class="panel-body" align="center">';
     echo $_SESSION['u_id'];
     echo '<img src=' . $row['product_img'] . ' width="100%">'; 
     echo '' . $row['product_name'] . ' ';
@@ -175,12 +179,19 @@ while($row = $data->fetch_array()) {
     $upsell = $row['upsell_data'];  
       
        echo'</div></div></div>';
+    
 
+   
+}
+echo'</div>';
+ $threedays = date('Y-m-d', strtotime("+3 days"));
+$fivedays = date('Y-m-d', strtotime("+5 days"));
          echo '<div class="col-md-3"><div class="panel panel-default"><div class="panel-body" align="center">';
   $final_price = $upsold + $product_price;
   $tax = $final_price * .0687;
 $final_price_with_tax = $tax + $final_price;
 $finalpircetaxandship = $final_price_with_tax + $shipping;
+echo 'you should expect your product to arrive between ' .$threedays. ' and ' .$fivedays. '<br/>';
   echo $product_name. ' $' .$product_price.'<br/>';
   echo $product2_name. ' $' .$upsold. '<br/>';
   echo 'Price: $'.$final_price. '<br/>';
@@ -189,9 +200,6 @@ $finalpircetaxandship = $final_price_with_tax + $shipping;
   
   echo'Thank you for your order';
  echo'</div></div></div>';
-
-   
-}
 }
 };
 
