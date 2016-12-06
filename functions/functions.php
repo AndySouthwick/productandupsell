@@ -16,7 +16,7 @@ if ($page == main){
     // The user row was found so display the user data
     echo '<div class="col-md-3"><div class="panel panel-default">
   <div class="panel-body" align="center">';
-    echo '<img src=' . $row['product_img'] . ' width="100%"><br/>';
+    echo '<img src="../MusicAppAdmin/images/' . $row['product_img'] . '" width="100%"><br/>';
     echo '' . $row['product_name'] . '<br/>';
     echo ' $' . $row['product_price'] . '<br/>';
     echo '' . $row['product_desc'] . '<br/>';
@@ -38,8 +38,7 @@ if (isset ($product)) {
 while($row = $data->fetch_array()) {
     // The  row was found so display the  data
     echo'<div class="col-md-9"><div class="panel panel-default"><div class="panel-body" align="center">';
-    echo $_SESSION['u_id'];
-    echo '<img src=' . $row['product_img'] . ' width="100%">'; 
+    echo '<img src="../MusicAppAdmin/images/' . $row['product_img'] . '" width="100%"><br/>'; 
     echo '' . $row['product_name'] . ' ';
     echo ' $' . $row['product_price'] . ' ';
     echo '' . $row['product_desc'] . ' ';
@@ -72,7 +71,7 @@ if ($error == 2){
 }
 //function for upsell
 function upsell(){
-$upsell =$_GET['add'];
+$upsell = $_GET['add'];
 $dbc = mysqli_connect('localhost', 'root', 'root', 'music_app')
 or die('Error connecting to MySQL server.');
 $query = "SELECT product_name, product_desc, product_img FROM my_products WHERE unique_id = '$upsell'";
@@ -83,10 +82,10 @@ while($row = $data->fetch_array()) {
     $image = $row['product_img'];
     $desc = $row['product_desc'];
     
-         echo' <h4 class="modal-title">'.$productname.'</h4>
+         echo' <h4 class="modal-title">test'.$productname.'</h4>
         </div>
         <div class="modal-body">
-        '.$image.'
+        <img src="../MusicAppAdmin/images/' . $row['product_img'] . '" width="100%"><br/>
           <p>'.$desc.'</p>
           <p>Would you like to add this for $3 more?</p>
         </div>';
@@ -145,8 +144,8 @@ $data = mysqli_query($dbc, $query);
 while($row = $data->fetch_array()) {
     // The  row was found so display the  data
     echo'<div class="col-md-12"><div class="panel panel-default"><div class="panel-body" align="center">';
-    echo $_SESSION['u_id'];
-    echo '<img src=' . $row['product_img'] . ' width="100%">'; 
+
+    echo '<img src="../MusicAppAdmin/images/' . $row['product_img'] . '" width="100%">'; 
     echo '' . $row['product_name'] . ' ';
     echo ' $' . $row['product_price'] . ' ';
     echo '' . $row['product_desc'] . ' ';
@@ -167,8 +166,8 @@ $data = mysqli_query($dbc, $query);
 while($row = $data->fetch_array()) {
     // The  row was found so display the  data
     echo'<div class="col-md-12"><div class="panel panel-default"><div class="panel-body" align="center">';
-    echo $_SESSION['u_id'];
-    echo '<img src=' . $row['product_img'] . ' width="100%">'; 
+    
+    echo '<img src="../MusicAppAdmin/images/' . $row['product_img'] . '" width="100%">'; 
     echo '' . $row['product_name'] . ' ';
     echo '$'; 
     echo $upsold;
